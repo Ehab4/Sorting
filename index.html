@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <script></script>
+</head>
+
+<body>
+    <header>
+        
+        <div class = "divStyle">
+            <label>Input an Array</label>
+            <input type="text" id="inputArray" value="" oninput="Input()">
+        </div>
+        <button id = "click1" onclick="BubbleSort()">BubbleSort</button>
+
+        <button id = "click2" onclick="InsertionSort()">InsertionSort</button>
+
+        <button id = "click3" onclick="SelectionSort()">SelectionSort</button>
+        <div class = "divStyle">
+            <label>Speed</label>
+            <input type="range" min="1" max="5" value="3"  id="myRange" class = "sliderPointer" oninput="Speed()">
+        </div>
+    </header>
+    <svg class="svg" id="id"></svg>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>

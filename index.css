@@ -1,0 +1,47 @@
+
+*{
+    box-sizing: border-box;
+}
+
+.svg{
+    transform-origin: 0px 0px;
+    display: block;
+    background-color:mediumpurple;
+    height: 400px;
+    width: 1000px;
+    margin: 50px auto auto 50px;
+    position: relative;
+}
+ 
+.svg.gclass.classtext{
+    text-align: center;
+}
+
+header{
+    background-color: moccasin;
+    width : auto;
+    height: 60px;
+}
+
+button{
+    
+    background-color:peru;
+    border: none;
+    color: white;
+    padding: 17px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.sliderPointer{
+    cursor: pointer;
+}
+.divStyle{
+    display: inline;
+    background-color: peru;
+    padding:17px 32px;
+    margin: 4px 2px; 
+}
