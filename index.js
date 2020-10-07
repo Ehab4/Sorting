@@ -20,7 +20,7 @@ arrayInput = document.getElementById("inputArray").value;
 array = arrayInput.split(",").map(Number);
 
 
-console.log(animationSteps);
+
 
 function Input() {
   arrayInput = document.getElementById("inputArray").value;
@@ -171,6 +171,9 @@ function BubbleSort() {
       if (n < animation_steps2.length) {
         mySort();
       }
+      else {
+        Enable();
+      }
 
 
 
@@ -228,81 +231,71 @@ function InsertionSort() {
         var temp = arr[b];
         arr[b] = arr[b - 1];
         arr[b - 1] = temp;
-        animationSteps[countSteps] = "swap";
-        Steps[step] = b;
-        step++;
-        countSteps++;
+        animation_steps1 += "swap," + b + "," + (b - 1) + ",";
       }
       else {
-        animationSteps[countSteps] = "move";
-        countSteps++;
+        animation_steps1 += "move," + (a) + ",";
         break;
       }
 
     }
 
   }
-  console.log(animationSteps);
-  console.log(Steps);
-  var n = 0;
-  var s = 0;
 
-  var index = 0;
-  var m = 0;
+  animation_steps2 = animation_steps1.split(',').map(String);
+  animation_steps2.pop();
+
+  console.log(animation_steps2);
 
   function mySort() {
-    console.log(Steps[s])
-    if (s < Steps.length) {
-      document.getElementById(squareArray[Steps[s]].id).style.transform = "translate(" + squareArray[Steps[s]].x + "px," + ((squareArray[Steps[s]].y - 180)) + "px)";
-      document.getElementById(squareArray[Steps[s]].c).style.fill = "red";
-    }
     time = setTimeout(function () {
 
-      if (animationSteps[n] == "swap") {
-        animate();
-        if ((Steps[s - 1] - 1) == 0) {
-          time3 = setTimeout(function () {
 
+      document.getElementById(squareArray[animation_steps2[n + 1]].c).style.fill = "red";
+
+      if (animation_steps2[n] == "swap") {
+        var temp1 = n + 1;
+        var temp2 = n + 2;
+        animate();
+        time3 = setTimeout(function () {
+
+          document.getElementById(squareArray[animation_steps2[temp1]].c).style.fill = "mediumspringgreen";
+
+          if (animation_steps2[temp2] == 0) {
             document.getElementById(squareArray[0].id).style.transform = "translate(" + squareArray[0].x + "px," + (squareArray[0].y) + "px)";
             document.getElementById(squareArray[0].c).style.fill = "mediumspringgreen";
 
           }
-            , speed)
-
         }
+
+          , speed)
       }
       else {
-        var h = s - 1;
-        console.log(Steps[h] - 1);
+        var temp1 = n + 1;
         time3 = setTimeout(function () {
-          {
-            if ((Steps[h] - 1) > 0) {
-              document.getElementById(squareArray[Steps[h] - 1].id).style.transform = "translate(" + squareArray[Steps[h] - 1].x + "px," + (squareArray[Steps[h] - 1].y) + "px)";
-            }
-
-          }
+          document.getElementById(squareArray[animation_steps2[temp1]].c).style.fill = "mediumspringgreen";
         }
           , speed)
-
-
-
-        n++;
-        index = s - 1;
-
-        if (Steps[index] > 0) {
+        if (n > 2) {
+          temp1 = n - 1;
+          console.log(animation_steps2[temp1]);
           time3 = setTimeout(function () {
-            {
-              document.getElementById(squareArray[Steps[index] - 1].c).style.fill = "mediumspringgreen";
-            }
+            document.getElementById(squareArray[animation_steps2[temp1]].id).style.transform = "translate(" + squareArray[animation_steps2[temp1]].x + "px," + (squareArray[animation_steps2[temp1]].y) + "px)";
+            document.getElementById(squareArray[animation_steps2[temp1]].c).style.fill = "mediumspringgreen";
+            document.getElementById(squareArray[animation_steps2[temp1 + 2]].c).style.fill = "mediumspringgreen";
+
           }
+
             , speed)
+
         }
+        n = n + 2;
 
       }
-
-      if (n < animationSteps.length) {
+      if (n < animation_steps2.length) {
         mySort();
-      } else {
+      }
+      else {
         Enable();
       }
 
@@ -314,24 +307,25 @@ function InsertionSort() {
 
   function animate() {
 
+    document.getElementById(squareArray[animation_steps2[n + 1]].id).style.transform = "translate(" + squareArray[animation_steps2[n + 2]].x + "px," + (squareArray[animation_steps2[n + 1]].y - 180) + "px)";
 
-    document.getElementById(squareArray[Steps[s]].id).style.transform = "translate(" + squareArray[Steps[s] - 1].x + "px," + (squareArray[Steps[s]].y - 180) + "px)";
+    document.getElementById(squareArray[animation_steps2[n + 2]].id).style.transform = "translate(" + squareArray[animation_steps2[n + 1]].x + "px," + squareArray[animation_steps2[n + 2]].y + "px)";
 
-    document.getElementById(squareArray[Steps[s] - 1].id).style.transform = "translate(" + squareArray[Steps[s]].x + "px," + squareArray[Steps[s] - 1].y + "px)";
-
-    document.getElementById(squareArray[Steps[s]].id).style.transitionDuration = speed + "ms";
-    document.getElementById(squareArray[Steps[s] - 1].id).style.transitionDuration = speed + "ms";
+    document.getElementById(squareArray[animation_steps2[n + 2]].id).style.transitionDuration = speed + "ms";
+    document.getElementById(squareArray[animation_steps2[n + 1]].id).style.transitionDuration = speed + "ms";
 
 
-    var temp1 = squareArray[Steps[s] - 1].x;
-    squareArray[Steps[s] - 1].x = squareArray[Steps[s]].x;
-    squareArray[Steps[s]].x = temp1;
 
-    var temp1 = squareArray[Steps[s] - 1];
-    squareArray[Steps[s] - 1] = squareArray[Steps[s]];
-    squareArray[Steps[s]] = temp1;
-    s++;
-    n++;
+    var temp1 = squareArray[animation_steps2[n + 1]].x;
+    squareArray[animation_steps2[n + 1]].x = squareArray[animation_steps2[n + 2]].x;
+    squareArray[animation_steps2[n + 2]].x = temp1;
+
+    var temp1 = squareArray[animation_steps2[n + 1]];
+    squareArray[animation_steps2[n + 1]] = squareArray[animation_steps2[n + 2]];
+    squareArray[animation_steps2[n + 2]] = temp1;
+
+
+    n = n + 3;
 
   }
 
