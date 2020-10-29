@@ -19,7 +19,7 @@
 
 header{
     background-color: moccasin;
-    width : auto;
+    width : 100%;
     height: 60px;
 }
 
@@ -36,12 +36,13 @@ button{
     margin: 4px 2px;
     cursor: pointer;
 }
+
 .sliderPointer{
     cursor: pointer;
 }
 .divStyle{
     display: inline;
     background-color: peru;
-    padding:17px 32px;
+    padding:17px 20px;
     margin: 4px 2px; 
 }

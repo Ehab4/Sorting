@@ -14,15 +14,20 @@
             <label>Input an Array</label>
             <input type="text" id="inputArray" value="" oninput="Input()">
         </div>
-        <button id = "click1" onclick="BubbleSort()">BubbleSort</button>
+        <button id = "click1" onclick="animationStepsForBubbleSort()">BubbleSort</button>
 
-        <button id = "click2" onclick="InsertionSort()">InsertionSort</button>
+        <button id = "click2" onclick="animationStepsForInsertionSort()">InsertionSort</button>
 
-        <button id = "click3" onclick="SelectionSort()">SelectionSort</button>
+        <button id = "click3" onclick="animationStepsForSelectionSort()">SelectionSort</button>
         <div class = "divStyle">
             <label>Speed</label>
             <input type="range" min="1" max="5" value="3"  id="myRange" class = "sliderPointer" oninput="Speed()">
         </div>
+        <button onclick = "Start()">Start</button>
+        <button onclick = "Pause()">Pause</button>
+        <button onclick = "Continue()">Continue</button>
+        <button onclick = "StepForward()">StepForward</button>
+        <button onclick = "StepBack()">StepBack</button>
     </header>
     <svg class="svg" id="id"></svg>
 
