@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href = "Graph.css">
+</head>
+
+
+<body>
+    <header>
+    <button onclick = "addVertices()">Add Vertices</button>
+    <button onclick = "connectVertices()">Connect Vertices</button>
+    <button onclick = "startBreadthFirstSearch()">Breadth First Search</button>
+    <button onclick = "startDepthFirstSearch()">Depth First Search</button>
+    <div class = "divStyle">
+        <label>Speed</label>
+        <input type="range" min="1" max="5" value="3"  id="myRange" class = "sliderPointer" oninput="Speed()">
+    </div>
+    <button onclick = "Start()">Start</button>
+    <button onclick = "Pause()">Pause</button>
+    <button onclick = "Continue()">Continue</button>
+    <button onclick = "clear()">Clear</button>
+    </header>
+    <canvas calss ="canvas" id = "coordiv" width = "800" height = "500" onclick="(connect_vertices) ? connectVertix(event)
+    : (add_vertices) ?cnvs_getCoordinates(event)
+    : (select_vertix) ?selectTwoVertix(event) : otherwiseBlock()"
+     onmousemove="(mouseMovement(event))"></canvas>
+    <div class = "description" id = "description-id">
+    
+     <!-- <div class = "box" id = "boxValue">
+        <lable>Enter the value of vertix</lable><input id = "value" type = "number">
+        <button class = "boxButton"onclick = "vertixValue()">Submit</button>
+     </div> -->
+     <div class = "select" id = "select-id">Select Start Vertex and End Vertex</div>
+     
+    <div class = "content-breadth-first-search" id="content-bfs">
+        Breadth First Traversal (or Search) for a graph is similar to Breadth First Traversal of a tree.<br> The only catch here is, unlike trees, graphs may contain cycles, so we may come to the same node again. To avoid processing a node more than once, we use a boolean visited array.<br> For simplicity, it is assumed that all vertices are reachable from the starting vertex. 
+    <br><br>
+    Time Complexity: O(V+E) where V is number of vertices in the graph and E is number of edges in the graph.
+    </div>
+    <div class = "content-depth-first-search" id="content-dfs">
+        Depth First Traversal (or Search) for a graph is similar to Depth First Traversal of a tree. The only catch here is, unlike trees, graphs may contain cycles, a node may be visited twice. To avoid processing a node more than once, use a boolean visited array.     
+        <br><br>
+        Time complexity: O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+        <br><br>Space Complexity: O(V). 
+        Since, an extra visited array is needed of size V.    </div></div>
+
+        <footer>Learn Algorithms &copy; 2020</footer>
+        <script src = "Graph.js"></script>
+
+
+    
+</body>
+
+</html>
