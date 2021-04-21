@@ -12,7 +12,7 @@
         
         <div class = "divStyle">
             <label>Input an Array</label>
-            <input type="text" id="inputArray" value="" oninput="Input()">
+            <input type="text"  id="inputArray" value="" oninput="Input()">
         </div>
         <button id = "click1" onclick="animationStepsForBubbleSort()">BubbleSort</button>
 
@@ -21,16 +21,65 @@
         <button id = "click3" onclick="animationStepsForSelectionSort()">SelectionSort</button>
         <div class = "divStyle">
             <label>Speed</label>
-            <input type="range" min="1" max="5" value="3"  id="myRange" class = "sliderPointer" oninput="Speed()">
+            <input type="range" min="1" max="6" value="3"  id="myRange" class = "sliderPointer" oninput="Speed()">
         </div>
+    </header>
+    <svg class="svg" id="id"></svg>
+    <div class="content-bubble-sort" id="content-bubble">
+        Bubble Sort is the simplest sorting algorithm
+        that works by repeatedly swapping the adjacent 
+        elements if they are in wrong order.
+        <br><br>
+        Worst and Average Case Time Complexity: O(n*n). Worst case occurs when array is reverse sorted.
+        <br><br>
+Best Case Time Complexity: O(n). Best case occurs when array is already sorted.
+<br><br>
+Auxiliary Space: O(1)
+<br><br>
+Boundary Cases: Bubble sort takes minimum time (Order of n) when elements are already sorted.
+<br><br>
+Sorting In Place: Yes
+<br><br>
+Stable: Yes
+<br><br>
+Due to its simplicity, bubble sort is often used to introduce the concept of a sorting algorithm.
+    
+</div>
+
+    <div class="content-insertion-sort" id="content-insertion">
+        Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.
+        <br><br>
+        To sort an array of size n in ascending order:<br>
+        1: Iterate from arr[1] to arr[n] over the array.<br>
+        2: Compare the current element (key) to its predecessor.<br>
+        3: If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.<br>
+        Time Complexity: O(n*2)<br><br>
+        Auxiliary Space: O(1)<br><br>
+        Boundary Cases: Insertion sort takes maximum time to sort if elements are sorted in reverse order. And it takes minimum time (Order of n) when elements are already sorted.<br><br>
+        Algorithmic Paradigm: Incremental Approach<br><br>
+        Sorting In Place: Yes<br><br>
+        Stable: Yes
+    </div>
+
+    <div class="content-selection-sort" id="content-selection">
+        The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array.
+        <br><br>1) The subarray which is already sorted.
+        <br><br>2) Remaining subarray which is unsorted.
+        <br><br>
+        In every iteration of selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the sorted subarray.
+        <br><br>
+        Time Complexity: O(n2) as there are two nested loops.
+        <br><br>Auxiliary Space: O(1)
+        <br><br>The good thing about selection sort is it never makes more than O(n) swaps and can be useful when memory write is a costly operation.
+    </div>
+
+    <footer>
         <button onclick = "Start()">Start</button>
         <button onclick = "Pause()">Pause</button>
         <button onclick = "Continue()">Continue</button>
         <button onclick = "StepForward()">StepForward</button>
         <button onclick = "StepBack()">StepBack</button>
-    </header>
-    <svg class="svg" id="id"></svg>
-
+    </footer>
     <script src="index.js"></script>
 
 </body>

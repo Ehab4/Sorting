@@ -40,21 +40,38 @@ var speed = 300;
 
 function Speed() {
   var newSpeed = document.getElementById("myRange").value;
-  speed = (newSpeed * 100);
+  if(newSpeed == 6){
+    speed = 20;
+  }
+  else if(newSpeed == 5){
+    speed = 100;
+  }
+  else if(newSpeed == 4){
+    speed = 250;
+  }
+  else if(newSpeed == 3){
+    speed = 450;
+  }
+  else if(newSpeed == 2){
+    speed = 750;
+  }
+  else if(newSpeed == 1){
+    speed = 900;
+  }
   console.log(speed);
 }
 
 function Disable() {
-  document.getElementById("click1").disabled = true;
-  document.getElementById("click2").disabled = true;
-  document.getElementById("click3").disabled = true;
+  //document.getElementById("click1").disabled = true;
+  //document.getElementById("click2").disabled = true;
+  //document.getElementById("click3").disabled = true;
   document.getElementById("inputArray").disabled = true;
 }
 
 function Enable() {
-  document.getElementById("click1").disabled = false;
-  document.getElementById("click2").disabled = false;
-  document.getElementById("click3").disabled = false;
+  //document.getElementById("click1").disabled = false;
+  //document.getElementById("click2").disabled = false;
+  //document.getElementById("click3").disabled = false;
   document.getElementById("inputArray").disabled = false;
 }
 
@@ -74,21 +91,50 @@ function Draw() {
   document.getElementById("id").innerHTML = "";
   squareArray = [];
   var left = 50;
-
+  var width = 0;
+  var margin = 0;
+  var x = 0;
+  if(array.length>20){
+  width = Math.floor(800/array.length);
+  margin = width+2;
+  x = Math.floor(width/2);
+  }
+  else{
+    width = 40;
+    margin = width+2;
+    x = 20;
+  }
   console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + array.length)
 
   for (var i = 0; i < array.length; i++) {
     var height = array[i] * 3 + 15;
+    var value = array[i];
+    if(array[i] >100 && array.length>20){
+      height = 100 * 3 + 15;
+      value = "";
+    }
+    else if(array[i] < 100 && array.length > 20){
+      height = array[i] * 3 + 15;
+      value = array[i];
+    }
+    else if(array[i] > 100 && array.length < 20){
+      height = 100 * 3 + 15;
+      value = array[i];
+    }
+    else{
+      height = array[i] * 3 + 15;
+      value = array[i];
+    }
     var y = 400 - height - 50;
     document.getElementById("id").innerHTML += "<g class = gclass id = idg" + i + "></g>";
     document.getElementById("idg" + i).innerHTML += "<rect id = id" + i + "></rect>";
-    document.getElementById("idg" + i).innerHTML += "<text text-anchor=middle x=20 y = " + (height - 3) + ">" + array[i] + "</text>";
+    document.getElementById("idg" + i).innerHTML += "<text text-anchor=middle x="+x+" y = " + (height - 3) + ">" + value + "</text>";
     document.getElementById("idg" + i).style.transform = "translate(" + left + "px" + "," + y + "px" + ")";
     document.getElementById("id" + i).style.fill = "mediumspringgreen";
-    document.getElementById("id" + i).style.width = "40px";
+    document.getElementById("id" + i).style.width = width+"px";
     document.getElementById("id" + i).style.height = height + "px";
     squareArray.push(new Square(left, y, array[i], "idg" + i, "id" + i));
-    left = left + 45;
+    left = left + margin;
     y = y + 20;
 
   }
@@ -100,12 +146,15 @@ Draw();
 
 function Start(){
   if(bSort == true){
+    
     bubbleSort();
   }
   else if(iSort == true){
+
     insertionSort();
   }
   else if(sSort == true){
+
     SelectionSort();
   }
 }
@@ -428,6 +477,10 @@ function animationStepsForBubbleSort() {
   Draw();
   bSort = true;
   iSort = false;
+  sSort = false;
+  document.getElementById("content-bubble").style.display = "inline";
+  document.getElementById("content-insertion").style.display = "none";
+  document.getElementById("content-selection").style.display = "none";
   animationSteps = [];
   Steps = [];
   animation_steps1 = "";
@@ -470,6 +523,8 @@ function animationStepsForBubbleSort() {
 
   var index = 0;
   var length = squareArray.length - 1;
+
+  console.log(squareArray);
 }
 
 function bubbleSort() {
@@ -545,8 +600,15 @@ function animationStepsForInsertionSort() {
   iSort = true;
   bSort = false;
   sSort = false;
+  document.getElementById("content-bubble").style.display = "none";
+  document.getElementById("content-insertion").style.display = "inline";
+  document.getElementById("content-selection").style.display = "none";
   animationSteps = [];
   Steps = [];
+
+  animation_steps1 = "";
+  animation_steps2 = [];
+
   n = 0;
   s = 0;
   var countSteps = 0;
@@ -602,6 +664,9 @@ function animationStepsForInsertionSort() {
   }
   animation_steps2 = animation_steps1.split(',').map(String);
   animation_steps2.pop();
+
+  console.log(squareArray);
+
 }
 
  
@@ -689,6 +754,9 @@ function animationStepsForSelectionSort() {
   iSort = false;
   bSort = false;
   sSort = true;
+  document.getElementById("content-bubble").style.display = "none";
+  document.getElementById("content-insertion").style.display = "none";
+  document.getElementById("content-selection").style.display = "inline";
   var takeMin = 0;
   var step = 0;
   var countSteps = 0;
